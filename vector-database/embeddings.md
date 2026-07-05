@@ -300,6 +300,7 @@ Epsilla supports these VoyageAI embedding models (learn more about Voyage AI emb
 | **voyageai/voyage-finance-2**        | 1024       |
 | **voyageai/voyage-multilingual-2**   | 1024       |
 | **voyageai/voyage-lite-02-instruct** | 1024       |
+| **voyageai/voyage-context-4**        | 1024       |
 | **voyageai/voyage-3-large**          | 1024       |
 | **voyageai/voyage-3**                | 1024       |
 | **voyageai/voyage-3-lite**           | 512        |

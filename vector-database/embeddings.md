@@ -292,6 +292,16 @@ Epsilla supports these VoyageAI embedding models (learn more about Voyage AI emb
 
 | Name                                 | Dimensions |
 | ------------------------------------ | ---------- |
+| **voyageai/voyage-4-large**          | 1024       |
+| **voyageai/voyage-4**                | 1024       |
+| **voyageai/voyage-4-lite**           | 1024       |
+| **voyageai/voyage-code-4**           | 1024       |
+| **voyageai/voyage-context-4**        | 1024       |
+| **voyageai/voyage-context-3**        | 1024       |
+| **voyageai/voyage-multimodal-3.5**   | 1024       |
+| **voyageai/voyage-multimodal-3**     | 1024       |
+| **voyageai/voyage-3.5**              | 1024       |
+| **voyageai/voyage-3.5-lite**         | 512        |
 | **voyageai/voyage-large-2-instruct** | 1024       |
 | **voyageai/voyage-finance-2**        | 1024       |
 | **voyageai/voyage-multilingual-2**   | 1024       |
@@ -309,6 +319,10 @@ Epsilla supports these VoyageAI embedding models (learn more about Voyage AI emb
 | **voyageai/voyage-3**                | 1024       |
 | **voyageai/voyage-3-lite**           | 512        |
 | **voyageai/voyage-code-3**           | 1024       |
+
+{% hint style="info" %}
+When you pick a `voyageai/voyage-context-*` contextualized model, each input string is embedded as its own independent document. Epsilla sends the batch as a flat list of strings with auto-chunking enabled and a large chunk size, so every string maps to exactly one chunk and one deterministic vector. Cross-input contextualization is intentionally not used, since a batch can contain unrelated texts. Auto-chunking is disabled on the query path because the Voyage API rejects it for query inputs.
+{% endhint %}
 
 When using Voyage AI embedding on Docker, make sure provide the **X-VoyageAI-API-Key** header when connecting to the vector database:
 

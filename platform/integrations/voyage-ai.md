@@ -10,6 +10,12 @@ Epsilla integrates with Voyage AI with the following embedding models:
 
 | Name                                 | Dimensions |
 |--------------------------------------|------------|
+| **voyageai/voyage-4-large**          | 1024       |
+| **voyageai/voyage-4**                | 1024       |
+| **voyageai/voyage-4-lite**           | 1024       |
+| **voyageai/voyage-code-4**           | 1024       |
+| **voyageai/voyage-context-4**        | 1024       |
+| **voyageai/voyage-multimodal-3.5**   | 1024       |
 | **voyageai/voyage-multimodal-3**     | 1024       |
 | **voyageai/voyage-context-3**        | 1024       |
 | **voyageai/voyage-3.5**              | 1024       |
@@ -25,6 +31,10 @@ Epsilla integrates with Voyage AI with the following embedding models:
 | **voyageai/voyage-code-2**           | 1536       |
 | **voyageai/voyage-large-2**          | 1536       |
 | **voyageai/voyage-2**                | 1024       |
+
+{% hint style="info" %}
+The `voyage-context-*` contextualized models are used the same way as any other embedding model. Each input string is embedded as its own independent document: Epsilla sends the batch as a flat list with auto-chunking enabled and a large chunk size, so every string resolves to exactly one chunk and one deterministic vector. Cross-input contextualization is not applied, because a batch may contain unrelated texts. On the query/retrieval path auto-chunking is disabled, since the Voyage API rejects it for query inputs.
+{% endhint %}
 
 For Epsilla open source vector db, you just need to add a header in the data ingestion and semantic search queries [like this](../../vector-database/embeddings.md#voyage-ai-embedding).
 

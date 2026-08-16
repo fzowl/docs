@@ -10,6 +10,12 @@ Epsilla integrates with Voyage AI with the following embedding models:
 
 | Name                                 | Dimensions |
 |--------------------------------------|------------|
+| **voyageai/voyage-4-large**          | 1024       |
+| **voyageai/voyage-4**                | 1024       |
+| **voyageai/voyage-4-lite**           | 1024       |
+| **voyageai/voyage-code-4**           | 1024       |
+| **voyageai/voyage-context-4**        | 1024       |
+| **voyageai/voyage-multimodal-3.5**   | 1024       |
 | **voyageai/voyage-multimodal-3**     | 1024       |
 | **voyageai/voyage-context-3**        | 1024       |
 | **voyageai/voyage-3.5**              | 1024       |
@@ -25,6 +31,10 @@ Epsilla integrates with Voyage AI with the following embedding models:
 | **voyageai/voyage-code-2**           | 1536       |
 | **voyageai/voyage-large-2**          | 1536       |
 | **voyageai/voyage-2**                | 1024       |
+
+{% hint style="info" %}
+The `voyageai/voyage-context-*` models are contextualized embedding models that you use exactly like any other embedding model in Epsilla. Each input string is embedded independently as its own document, so you get one deterministic vector per input. Contextualization across the other texts in the same batch is not applied, because a batch may contain unrelated documents. Pick these models for their standalone embedding quality.
+{% endhint %}
 
 For Epsilla open source vector db, you just need to add a header in the data ingestion and semantic search queries [like this](../../vector-database/embeddings.md#voyage-ai-embedding).
 

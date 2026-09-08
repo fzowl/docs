@@ -2,7 +2,7 @@
 
 ## Model Providers
 
-Integrating with large language models (LLMs) and embedding model providers in Epsilla allows users to tap into cutting-edge AI models for a variety of applications. Epsilla offers seamless connections to a range of providers such as OpenAI, Anthropic, and others, supporting models like GPT-4, Claude, Mistral, and embedding solutions like JinaAI, VoyageAI, etc.
+Integrating with large language models (LLMs) and embedding model providers in Epsilla allows users to tap into cutting-edge AI models for a variety of applications. Epsilla offers seamless connections to a range of providers such as OpenAI, Anthropic, and others, supporting models like GPT-4, Claude, Mistral, and embedding solutions like JinaAI, VoyageAI by MongoDB, etc.
 
 <figure><img src=".gitbook/assets/Screenshot 2024-10-14 at 12.50.11 AM.png" alt=""><figcaption></figcaption></figure>
 

@@ -286,31 +286,30 @@ await db.createTable(
 {% endtab %}
 {% endtabs %}
 
-## Voyage AI Embedding
+## VoyageAI by MongoDB Embedding
 
-Epsilla supports these VoyageAI embedding models (learn more about Voyage AI embedding at [https://docs.voyageai.com/docs/embeddings](https://docs.voyageai.com/docs/embeddings)):
+Epsilla supports these VoyageAI by MongoDB embedding models (learn more about VoyageAI by MongoDB embedding at [https://docs.voyageai.com/docs/embeddings](https://docs.voyageai.com/docs/embeddings)):
 
 | Name                                 | Dimensions |
 | ------------------------------------ | ---------- |
-| **voyageai/voyage-large-2-instruct** | 1024       |
-| **voyageai/voyage-finance-2**        | 1024       |
-| **voyageai/voyage-multilingual-2**   | 1024       |
-| **voyageai/voyage-law-2**            | 1024       |
-| **voyageai/voyage-code-2**           | 1536       |
-| **voyageai/voyage-large-2**          | 1536       |
-| **voyageai/voyage-code-2**           | 1536       |
-| **voyageai/voyage-2**                | 1024       |
-| **voyageai/voyage-02**               | 1024       |
-| **voyageai/voyage-law-2**            | 1024       |
-| **voyageai/voyage-finance-2**        | 1024       |
-| **voyageai/voyage-multilingual-2**   | 1024       |
-| **voyageai/voyage-lite-02-instruct** | 1024       |
+| **voyageai/voyage-4-large**          | 1024       |
+| **voyageai/voyage-4**                | 1024       |
+| **voyageai/voyage-4-lite**           | 1024       |
+| **voyageai/voyage-4-nano**           | 1024       |
+| **voyageai/voyage-code-4**           | 1024       |
+| **voyageai/voyage-context-4**        | 1024       |
+| **voyageai/voyage-multimodal-3**     | 1024       |
+| **voyageai/voyage-context-3**        | 1024       |
+| **voyageai/voyage-3.5**              | 1024       |
+| **voyageai/voyage-3.5-lite**         | 512        |
 | **voyageai/voyage-3-large**          | 1024       |
-| **voyageai/voyage-3**                | 1024       |
-| **voyageai/voyage-3-lite**           | 512        |
 | **voyageai/voyage-code-3**           | 1024       |
+| **voyageai/voyage-finance-2**        | 1024       |
+| **voyageai/voyage-law-2**            | 1024       |
 
-When using Voyage AI embedding on Docker, make sure provide the **X-VoyageAI-API-Key** header when connecting to the vector database:
+The **voyageai/voyage-context-4** and **voyageai/voyage-context-3** contextual models are served through VoyageAI by MongoDB's `contextualized_embed` API, whose `inputs` parameter accepts both supported formats — `inputs: Union[List[List[str]], List[str]]` (pre-chunked documents as a nested list, or a flat list of strings). See the [official spec](https://docs.voyageai.com/docs/contextualized-chunk-embeddings).
+
+When using VoyageAI by MongoDB embedding on Docker, make sure provide the **X-VoyageAI-API-Key** header when connecting to the vector database:
 
 {% tabs %}
 {% tab title="Python" %}
@@ -318,7 +317,7 @@ When using Voyage AI embedding on Docker, make sure provide the **X-VoyageAI-API
 db = vectordb.Client(
     ...
     headers={
-        "X-VoyageAI-API-Key": <Your Voyage AI API key here>
+        "X-VoyageAI-API-Key": <Your VoyageAI by MongoDB API key here>
     }
 )
 ```
@@ -329,7 +328,7 @@ db = vectordb.Client(
 const db = new epsillajs.EpsillaDB({
     ...
     headers: {
-        "X-VoyageAI-API-Key": <Your Voyage AI API key here>
+        "X-VoyageAI-API-Key": <Your VoyageAI by MongoDB API key here>
     }
 });
 ```
@@ -337,7 +336,7 @@ const db = new epsillajs.EpsillaDB({
 {% endtabs %}
 
 {% hint style="info" %}
-If you are using Epsilla Cloud, make sure to add [VoyageAI integration](../platform/integrations/voyage-ai.md) instead of passing the header.
+If you are using Epsilla Cloud, make sure to add [VoyageAI by MongoDB integration](../platform/integrations/voyage-ai.md) instead of passing the header.
 {% endhint %}
 
 And use the embedding model when defining the index:
@@ -348,7 +347,7 @@ And use the embedding model when defining the index:
 status_code, response = db.create_table(
     ...
     indices=[
-        {"name": "Index", "field": "Doc", "model": "voyageai/voyage-02"}
+        {"name": "Index", "field": "Doc", "model": "voyageai/voyage-3.5"}
     ]
 )
 ```
@@ -359,7 +358,7 @@ status_code, response = db.create_table(
 await db.createTable(
   ...
   [
-    {"name": "Index", "field": "Doc", "model": "voyageai/voyage-02"}
+    {"name": "Index", "field": "Doc", "model": "voyageai/voyage-3.5"}
   ]
 );
 ```

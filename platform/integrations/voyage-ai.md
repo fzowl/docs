@@ -34,6 +34,6 @@ Epsilla integrates with Voyage AI by MongoDB with the following embedding models
 
 For Epsilla open source vector db, you just need to add a header in the data ingestion and semantic search queries [like this](../../vector-database/embeddings.md#voyage-ai-by-mongodb-embedding).
 
-Then you can start using the voyageai embedding models during vector table schema creation:
+Then you can start using the Voyage AI by MongoDB embedding models during vector table schema creation:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-01-31 at 12.10.07 PM.png" alt=""><figcaption></figcaption></figure>
